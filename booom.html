@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Boom</title>
+    <link href="boom2.css" rel='stylesheet' type='text/css' />
+<link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
+
+  </head>
+  <body>
+
+<div class="inner">
+    <h3>Hover me ⬇</h3>
+    <div class="demo demo2">
+        <span>🔥Xequals</span>   
+    </div>
+    <div class="content">
+        <h2>Welcome to Xequals </h2>
+        <blockquote>
+            <p>We didn't have any investment - only heart, soul and time </p>
+            <cite>Alex Matthews</cite>
+        </blockquote>
+    </div>
+</div>
+
+
+    <script>
+        const demo = document.querySelector('.demo');
+        const text = demo.querySelector('span');
+        const walk = 40; 
+        function draw(e) {
+          const {
+            offsetWidth: width,
+            offsetHeight: height
+          } = demo;
+          let {
+            offsetX: x,
+            offsetY: y
+          } = e;
+        
+          if (e.target !== this) {
+            
+            x = x + e.target.offsetLeft;
+            y = y + e.target.offsetTop;
+          }
+        
+          const xaisx = Math.floor((x / width * walk) - (walk / 2));
+          const yaisx = Math.floor((y / height * walk) - (walk / 2));
+          text.style.textShadow =
+            `
+            ${xaisx}px ${yaisx * -1}px 2px rgba(61,87,112,0.7),
+      ${xaisx * -1}px ${yaisx}px 2px rgba(32,66,112,0.7),
+      ${yaisx}px ${xaisx * -1}px 2px rgba(188,188,188,0.7),
+      ${yaisx * -1}px ${xaisx}px 2px rgba(0,0,255,0.7)       
+         `; 
+        
+        }
+        demo.addEventListener('mousemove', draw);
+      </script>
+  </body>
+</html>
